@@ -1,7 +1,7 @@
-package uc6test;
+package test;
 
 
-import uc6.QuantityMeasurementApp;
+import com.src.main.QuantityMeasurementApp;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

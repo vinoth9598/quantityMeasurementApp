@@ -1,4 +1,4 @@
-package uc6;
+package main;
 
 public class QuantityMeasurementApp {
 
