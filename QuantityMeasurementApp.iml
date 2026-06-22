@@ -18,6 +18,8 @@
       </library>
     </orderEntry>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
     <orderEntry type="module-library">
       <library name="JUnit4">
         <CLASSES>
@@ -30,5 +32,6 @@
     </orderEntry>
 =======
 >>>>>>> 4c825f10870407412c7b49cce163e56bbab886f4
+>>>>>>> 18cd4c1bbe5baaaba8abefb18ed833d93da03595
   </component>
 </module>
