@@ -1,6 +1,3 @@
-package test;
-
-
 import main.QuantityMeasurementApp;
 import org.junit.Test;
 
