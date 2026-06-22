@@ -1,6 +1,6 @@
-package test;
+package uc5Test;
 
-import main.QuantityMeasurementApp;
+import uc5.QuantityMeasurementApp;
 
 import org.junit.Test;
 
