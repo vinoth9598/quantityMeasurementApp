@@ -1,4 +1,4 @@
-package com.src.main;
+package main;
 public enum LengthUnit implements IMeasurable {
 
     FEET(1.0),

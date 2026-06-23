@@ -1,4 +1,4 @@
-package com.src.main;
+package main;
 
 import java.util.function.DoubleBinaryOperator;
 
@@ -323,4 +323,6 @@ public class Quantity<U extends IMeasurable> {
                 unit.getUnitName() +
                 ")";
     }
+
+
 }

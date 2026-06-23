@@ -1,4 +1,4 @@
-package com.src.main;
+package main;
 
 public interface IMeasurable {
 
@@ -9,4 +9,21 @@ public interface IMeasurable {
     double convertFromBaseUnit(double baseValue);
 
     String getUnitName();
+
+    // Default: supports arithmetic
+    SupportsArithmetic supportsArithmetic = () -> true;
+
+    default boolean supportsArithmetic() {
+        return supportsArithmetic.isSupported();
+    }
+
+    // Default validation (no restriction)
+    default void validateOperationSupport(String operation) {
+        // No restriction for most units
+    }
+}
+
+@FunctionalInterface
+interface SupportsArithmetic {
+    boolean isSupported();
 }
