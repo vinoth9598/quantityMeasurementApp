@@ -1,7 +1,7 @@
 package test;
 
-import main.QuantityWeight;
-import main.WeightUnit;
+import com.src.main.QuantityWeight;
+import com.src.main.WeightUnit;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
