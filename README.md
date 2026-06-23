@@ -12,3 +12,21 @@ Project Overview
   Generic Quantity Architecture
   N-Tier Architecture
   Database Persistence using JDBC
+  
+dev/
+├── UC1-Feet-Equality.md
+├── UC2-Feet-Inch-Equality.md
+├── UC3-Generic-Quantity-Class.md
+├── UC4-Extended-Unit-Support.md
+├── UC5-Unit-Conversion-Support.md
+├── UC6-Length-Addition.md
+├── UC7-Explicit-Target-Unit-Addition.md
+├── UC8-Standalone-LengthUnit-Refactor.md
+├── UC9-Weight-Measurement-Support.md
+├── UC10-Generic-Quantity-Architecture.md
+├── UC11-Volume-Measurement-Support.md
+├── UC12-Subtraction-Division-Operations.md
+├── UC13-Centralized-Arithmetic-Logic.md
+├── UC14-Temperature-Support.md
+├── UC15-N-Tier-Architecture-Refactor.md
+└── UC16-Database-Layer-JDBC.md
