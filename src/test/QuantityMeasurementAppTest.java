@@ -317,6 +317,28 @@ public class QuantityMeasurementAppTest {
     }
 
     @Test
+    public void testAddition_ExplicitTargetUnit_Gallon() {
+
+        Quantity<VolumeUnit> result =
+                new Quantity<>(
+                        3.78541,
+                        VolumeUnit.LITRE
+                ).add(
+                        new Quantity<>(
+                                3.78541,
+                                VolumeUnit.LITRE
+                        ),
+                        VolumeUnit.GALLON
+                );
+
+        assertEquals(
+                2.0,
+                result.getValue(),
+                EPSILON
+        );
+    }
+
+    @Test
     public void testAddition_WithZero() {
 
         Quantity<VolumeUnit> result =
