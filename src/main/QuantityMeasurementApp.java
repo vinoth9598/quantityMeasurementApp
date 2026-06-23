@@ -1,4 +1,4 @@
-package main;
+package com.src.main;
 
 import com.src.main.controller.QuantityMeasurementController;
 import com.src.main.dto.QuantityDTO;
@@ -36,5 +36,13 @@ public class QuantityMeasurementApp {
                 new QuantityDTO(1, "KILOGRAM", "WEIGHT"),
                 new QuantityDTO(1000, "GRAM", "WEIGHT")
         );
+
+        // Unsupported Operation
+        try {
+            new Quantity<>(100.0, TemperatureUnit.CELSIUS)
+                    .add(new Quantity<>(50.0, TemperatureUnit.CELSIUS));
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
