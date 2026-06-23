@@ -184,7 +184,7 @@ public class QuantityMeasurementAppTest {
                 );
 
         assertEquals(
-                original.getValue(),
+                12.0,
                 result.getValue(),
                 EPSILON
         );
@@ -205,7 +205,7 @@ public class QuantityMeasurementAppTest {
                 );
 
         assertEquals(
-                3.0,
+                1000.0,
                 result.getValue(),
                 EPSILON
         );
@@ -269,7 +269,51 @@ public class QuantityMeasurementAppTest {
                 );
 
         assertEquals(
-                2000.0,
+                2.0,
+                result.getValue(),
+                EPSILON
+        );
+    }
+
+    @Test
+    public void testAddition_ExplicitTargetUnit_Gallon() {
+
+        Quantity<VolumeUnit> result =
+                new Quantity<>(
+                        3.78541,
+                        VolumeUnit.LITRE
+                ).add(
+                        new Quantity<>(
+                                3.78541,
+                                VolumeUnit.LITRE
+                        ),
+                        VolumeUnit.GALLON
+                );
+
+        assertEquals(
+                2.0,
+                result.getValue(),
+                EPSILON
+        );
+    }
+
+    @Test
+    public void testAddition_ExplicitTargetUnit_Gallon() {
+
+        Quantity<VolumeUnit> result =
+                new Quantity<>(
+                        3.78541,
+                        VolumeUnit.LITRE
+                ).add(
+                        new Quantity<>(
+                                3.78541,
+                                VolumeUnit.LITRE
+                        ),
+                        VolumeUnit.GALLON
+                );
+
+        assertEquals(
+                2.0,
                 result.getValue(),
                 EPSILON
         );
@@ -332,9 +376,15 @@ public class QuantityMeasurementAppTest {
                         )
                 );
 
+        assertFalse(feet.equals(kilogram));
+    }
+
+    @Test
+    public void testVolumeUnitEnum_LitreConstant() {
+
         assertEquals(
-                3.0,
-                result.getValue(),
+                1.0,
+                VolumeUnit.LITRE.getConversionFactor(),
                 EPSILON
         );
     }
