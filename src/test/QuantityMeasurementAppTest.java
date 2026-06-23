@@ -1,4 +1,4 @@
-package test;
+package com.src.test;
 import com.src.main.LengthUnit;
 import com.src.main.Quantity;
 import com.src.main.VolumeUnit;
@@ -266,6 +266,28 @@ public class QuantityMeasurementAppTest {
                                 VolumeUnit.MILLILITRE
                         ),
                         VolumeUnit.MILLILITRE
+                );
+
+        assertEquals(
+                2.0,
+                result.getValue(),
+                EPSILON
+        );
+    }
+
+    @Test
+    public void testAddition_ExplicitTargetUnit_Gallon() {
+
+        Quantity<VolumeUnit> result =
+                new Quantity<>(
+                        3.78541,
+                        VolumeUnit.LITRE
+                ).add(
+                        new Quantity<>(
+                                3.78541,
+                                VolumeUnit.LITRE
+                        ),
+                        VolumeUnit.GALLON
                 );
 
         assertEquals(

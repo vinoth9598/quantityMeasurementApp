@@ -1,4 +1,4 @@
-package test;
+package com.src.test;
 
 import com.src.main.LengthUnit;
 import com.src.main.Quantity;
