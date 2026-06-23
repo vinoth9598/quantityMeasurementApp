@@ -30,3 +30,13 @@ dev/
 ├── UC14-Temperature-Support.md
 ├── UC15-N-Tier-Architecture-Refactor.md
 └── UC16-Database-Layer-JDBC.md
+
+Branch: feature/UC1-feet-equality
+Objective
+
+Implement equality comparison between two measurements in Feet.
+
+Requirements
+Create Feet class.
+Support value comparison.
+Two feet values with same length should be equal.
