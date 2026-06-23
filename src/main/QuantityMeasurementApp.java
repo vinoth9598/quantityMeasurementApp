@@ -29,6 +29,16 @@ public class QuantityMeasurementApp {
             Quantity<U> second
     ) {
 
+        System.out.println();
+    }
+
+    public static <U extends IMeasurable>
+    void demonstrateAddition(
+            Quantity<U> first,
+            Quantity<U> second,
+            U targetUnit
+    ) {
+
         System.out.println(
                 first + ".divide(" +
                         second + ") => " +
