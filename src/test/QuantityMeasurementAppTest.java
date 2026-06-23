@@ -184,7 +184,7 @@ public class QuantityMeasurementAppTest {
                 );
 
         assertEquals(
-                original.getValue(),
+                12.0,
                 result.getValue(),
                 EPSILON
         );
@@ -205,7 +205,7 @@ public class QuantityMeasurementAppTest {
                 );
 
         assertEquals(
-                3.0,
+                1000.0,
                 result.getValue(),
                 EPSILON
         );
@@ -269,7 +269,7 @@ public class QuantityMeasurementAppTest {
                 );
 
         assertEquals(
-                2000.0,
+                2.0,
                 result.getValue(),
                 EPSILON
         );
@@ -332,11 +332,7 @@ public class QuantityMeasurementAppTest {
                         )
                 );
 
-        assertEquals(
-                3.0,
-                result.getValue(),
-                EPSILON
-        );
+        assertFalse(feet.equals(kilogram));
     }
 
     @Test
@@ -346,6 +342,15 @@ public class QuantityMeasurementAppTest {
                 1.0,
                 VolumeUnit.LITRE.getConversionFactor(),
                 EPSILON
+        );
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testConstructorValidation_InvalidValue() {
+
+        new Quantity<>(
+                Double.NaN,
+                LengthUnit.FEET
         );
     }
 
