@@ -1,4 +1,4 @@
-package com.src.main;
+package main;
 
 public interface IMeasurable {
 

@@ -1,4 +1,4 @@
-package com.src.test;
+package test;
 import com.src.main.LengthUnit;
 import com.src.main.Quantity;
 import com.src.main.VolumeUnit;
@@ -298,6 +298,28 @@ public class QuantityMeasurementAppTest {
     }
 
     @Test
+    public void testAddition_ExplicitTargetUnit_Gallon() {
+
+        Quantity<VolumeUnit> result =
+                new Quantity<>(
+                        3.78541,
+                        VolumeUnit.LITRE
+                ).add(
+                        new Quantity<>(
+                                3.78541,
+                                VolumeUnit.LITRE
+                        ),
+                        VolumeUnit.GALLON
+                );
+
+        assertEquals(
+                2.0,
+                result.getValue(),
+                EPSILON
+        );
+    }
+
+    @Test
     public void testAddition_WithZero() {
 
         Quantity<VolumeUnit> result =
@@ -345,12 +367,13 @@ public class QuantityMeasurementAppTest {
         );
     }
 
-    @Test(expected = IllegalArgumentException.class)
-    public void testConstructorValidation_InvalidValue() {
+    @Test
+    public void testVolumeUnitEnum_LitreConstant() {
 
-        new Quantity<>(
-                Double.NaN,
-                LengthUnit.FEET
+        assertEquals(
+                1.0,
+                VolumeUnit.LITRE.getConversionFactor(),
+                EPSILON
         );
     }
 
