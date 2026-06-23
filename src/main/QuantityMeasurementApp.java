@@ -2,88 +2,144 @@ package main;
 
 public class QuantityMeasurementApp {
 
+    public static <U extends IMeasurable>
+    void demonstrateAddition(
+            Quantity<U> first,
+            Quantity<U> second,
+            U targetUnit
+    ) {
+
+        System.out.println(
+                first + ".add(" +
+                        second + ", " +
+                        targetUnit + ") => " +
+                        first.add(
+                                second,
+                                targetUnit
+                        )
+        );
+
+        System.out.println();
+    }
+
+    public static <U extends IMeasurable>
+    void demonstrateSubtraction(
+            Quantity<U> first,
+            Quantity<U> second,
+            U targetUnit
+    ) {
+
+        System.out.println(
+                first + ".subtract(" +
+                        second + ", " +
+                        targetUnit + ") => " +
+                        first.subtract(
+                                second,
+                                targetUnit
+                        )
+        );
+
+        System.out.println();
+    }
+
+    public static <U extends IMeasurable>
+    void demonstrateDivision(
+            Quantity<U> first,
+            Quantity<U> second
+    ) {
+
+        System.out.println(
+                first + ".divide(" +
+                        second + ") => " +
+                        first.divide(second)
+        );
+
+        System.out.println();
+    }
+
     public static void main(String[] args) {
 
-        // Equality
-        System.out.println(
-                "Input: Quantity(1.0, KILOGRAM).equals(Quantity(1000.0, GRAM))"
+        // Addition
+        demonstrateAddition(
+                new Quantity<>(
+                        1.0,
+                        LengthUnit.FEET
+                ),
+                new Quantity<>(
+                        12.0,
+                        LengthUnit.INCHES
+                ),
+                LengthUnit.FEET
+        );
+
+        // Subtraction
+        demonstrateSubtraction(
+                new Quantity<>(
+                        10.0,
+                        LengthUnit.FEET
+                ),
+                new Quantity<>(
+                        6.0,
+                        LengthUnit.INCHES
+                ),
+                LengthUnit.FEET
+        );
+
+        // Division
+        demonstrateDivision(
+                new Quantity<>(
+                        24.0,
+                        LengthUnit.INCHES
+                ),
+                new Quantity<>(
+                        2.0,
+                        LengthUnit.FEET
+                )
+        );
+
+        // Weight Example
+        demonstrateAddition(
+                new Quantity<>(
+                        10.0,
+                        WeightUnit.KILOGRAM
+                ),
+                new Quantity<>(
+                        5000.0,
+                        WeightUnit.GRAM
+                ),
+                WeightUnit.GRAM
+        );
+
+        // Volume Example
+        demonstrateSubtraction(
+                new Quantity<>(
+                        5.0,
+                        VolumeUnit.LITRE
+                ),
+                new Quantity<>(
+                        2.0,
+                        VolumeUnit.LITRE
+                ),
+                VolumeUnit.MILLILITRE
         );
 
         System.out.println(
-                "Output: " +
-                        new QuantityWeight(
-                                1.0,
-                                WeightUnit.KILOGRAM
-                        ).equals(
-                                new QuantityWeight(
-                                        1000.0,
-                                        WeightUnit.GRAM
-                                )
-                        )
+                new Quantity<>(0.0, TemperatureUnit.CELSIUS)
+                        .equals(new Quantity<>(32.0, TemperatureUnit.FAHRENHEIT))
         );
-
-        System.out.println();
 
         // Conversion
-        QuantityWeight converted =
-                new QuantityWeight(
-                        1.0,
-                        WeightUnit.KILOGRAM
-                ).convertTo(
-                        WeightUnit.GRAM
-                );
-
         System.out.println(
-                "Input: Quantity(1.0, KILOGRAM).convertTo(GRAM)"
+                new Quantity<>(100.0, TemperatureUnit.CELSIUS)
+                        .convertTo(TemperatureUnit.FAHRENHEIT)
         );
 
-        System.out.println(
-                "Output: " + converted
-        );
-
-        System.out.println();
-
-        // Addition
-        QuantityWeight addition =
-                new QuantityWeight(
-                        1.0,
-                        WeightUnit.KILOGRAM
-                ).add(
-                        new QuantityWeight(
-                                1000.0,
-                                WeightUnit.GRAM
-                        )
-                );
-
-        System.out.println(
-                "Input: Quantity(1.0, KILOGRAM).add(Quantity(1000.0, GRAM))"
-        );
-
-        System.out.println(
-                "Output: " + addition
-        );
-
-        System.out.println();
-
-        // Addition with target unit
-        QuantityWeight targetAddition =
-                new QuantityWeight(
-                        1.0,
-                        WeightUnit.KILOGRAM
-                ).add(
-                        new QuantityWeight(
-                                1000.0,
-                                WeightUnit.GRAM
-                        ),
-                        WeightUnit.GRAM
-                );
-
-        System.out.println(
-                "Input: Quantity(1.0, KILOGRAM).add(Quantity(1000.0, GRAM), GRAM)"
-        );
-
-        System.out.println(
-                "Output: " + targetAddition
-        );
+        // Unsupported Operation
+        try {
+            new Quantity<>(100.0, TemperatureUnit.CELSIUS)
+                    .add(new Quantity<>(50.0, TemperatureUnit.CELSIUS));
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
