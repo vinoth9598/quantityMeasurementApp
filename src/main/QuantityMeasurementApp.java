@@ -1,89 +1,32 @@
 package main;
 
+import com.src.main.controller.QuantityMeasurementController;
+import com.src.main.dto.QuantityDTO;
+import com.src.main.repository.IQuantityMeasurementRepository;
+import com.src.main.repository.QuantityMeasurementDatabaseRepository;
+import com.src.main.service.IQuantityMeasurementService;
+import com.src.main.service.QuantityMeasurementServiceImpl;
+import com.src.main.util.DatabaseInitializer;
+
 public class QuantityMeasurementApp {
 
     public static void main(String[] args) {
 
-        // Equality
-        System.out.println(
-                "Input: Quantity(1.0, KILOGRAM).equals(Quantity(1000.0, GRAM))"
-        );
+        //  Initialize DB
+        DatabaseInitializer.init();
 
-        System.out.println(
-                "Output: " +
-                        new QuantityWeight(
-                                1.0,
-                                WeightUnit.KILOGRAM
-                        ).equals(
-                                new QuantityWeight(
-                                        1000.0,
-                                        WeightUnit.GRAM
-                                )
-                        )
-        );
+        IQuantityMeasurementRepository repo =
+                new QuantityMeasurementDatabaseRepository();
 
-        System.out.println();
+        IQuantityMeasurementService service =
+                new QuantityMeasurementServiceImpl(repo);
 
-        // Conversion
-        QuantityWeight converted =
-                new QuantityWeight(
-                        1.0,
-                        WeightUnit.KILOGRAM
-                ).convertTo(
-                        WeightUnit.GRAM
-                );
+        QuantityMeasurementController controller =
+                new QuantityMeasurementController(service);
 
-        System.out.println(
-                "Input: Quantity(1.0, KILOGRAM).convertTo(GRAM)"
-        );
-
-        System.out.println(
-                "Output: " + converted
-        );
-
-        System.out.println();
-
-        // Addition
-        QuantityWeight addition =
-                new QuantityWeight(
-                        1.0,
-                        WeightUnit.KILOGRAM
-                ).add(
-                        new QuantityWeight(
-                                1000.0,
-                                WeightUnit.GRAM
-                        )
-                );
-
-        System.out.println(
-                "Input: Quantity(1.0, KILOGRAM).add(Quantity(1000.0, GRAM))"
-        );
-
-        System.out.println(
-                "Output: " + addition
-        );
-
-        System.out.println();
-
-        // Addition with target unit
-        QuantityWeight targetAddition =
-                new QuantityWeight(
-                        1.0,
-                        WeightUnit.KILOGRAM
-                ).add(
-                        new QuantityWeight(
-                                1000.0,
-                                WeightUnit.GRAM
-                        ),
-                        WeightUnit.GRAM
-                );
-
-        System.out.println(
-                "Input: Quantity(1.0, KILOGRAM).add(Quantity(1000.0, GRAM), GRAM)"
-        );
-
-        System.out.println(
-                "Output: " + targetAddition
+        controller.performComparison(
+                new QuantityDTO(1, "FEET", "LENGTH"),
+                new QuantityDTO(12, "INCHES", "LENGTH")
         );
     }
 }
